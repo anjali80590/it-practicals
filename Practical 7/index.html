@@ -1,94 +1,127 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Practical 7</title>
+    <style type="text/css">
+      #pet-data {
+        border: 1px solid black;
+        border-radius: 10px;
+        border-collapse: collapse;
+      }
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      #btn-fetch {
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        border-radius: 8px;
+      }
+    </style>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div id="content"></div>
+
+    <button id="btn-fetch">Fetch Data</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      var btnFetch = document.getElementById("btn-fetch");
+      var content = document.getElementById("content");
+      btnFetch.addEventListener("click", () => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/pet.json", true);
+        xhr.onload = () => {
+          console.log(xhr.responseText);
+          renderHtml(JSON.parse(xhr.responseText));
+        };
+
+        xhr.send();
+      });
+
+      function renderHtml(data) {
+        content.innerHTML = "";
+        for (var i = 0; i < data.length; i++) {
+          let p = document.createElement("p");
+          let htmlpart = "";
+          htmlpart += data[i].name +"is a "+data[i].type +  " with age " + data[i].age + " years and weight " +data[i].weight +"kg and likes "+ data[i].likes;
+          p.innerHTML = htmlpart;
+          content.append(p);
+          htmlpart = "";
+        }
+      }
+    </script>
+  </body>
+</html>  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Practical 7</title>
-	<style type="text/css">
-		#pet-data{
-			border: 1px solid black;
-			border-radius: 10px;
-			border-collapse: collapse;
-		}
-		td{
-			border: 1px solid black;
-			border-collapse: collapse;
-		}
-		#btn-fetch{
-			margin-top: 20px;
-			font-size: 24px;
-			font-weight: bold;
-			background-color: black;
-			color: white;
-			border-radius: 8px;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pets Information</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #content {
+      margin-top: 20px;
+    }
+    .pet-card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-	<!-- <table id="pet-data">
-		<thead>
-			<tr>
-				<td>ID</td>
-				<td>Title</td>
-				<td>Body</td> -->
-				<!-- <td>Type</td>
-				<td>Likes</td> -->
-			<!-- </tr>
-		</thead>
-		<tbody id="content">
-		</tbody>
-	</table> -->
 
-	<div id="content">
-		
-	</div>
+  <h1>Pets Information</h1>
+  <div id="content"></div>
 
-	<button id="btn-fetch">Fetch Data</button>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		// $("#btn-fetch").click(function(){
-		//   $.ajax({
-		//   		type: "Get",
-		// 	    url: "https://jsonplaceholder.typicode.com/posts",
-		// 	    dataType: "json", 
-		// 	    success: function(result){
-		//    			 console.log(result);
-		//   			}
-		// 	});
-		// });
-		var btnFetch = document.getElementById('btn-fetch');
-		var content = document.getElementById('content');
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Load data from pets.json using AJAX
+      $.ajax({
+        url: 'pets.json',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+          // Call function to render HTML with the loaded data
+          renderPetCards(data);
+        },
+        error: function () {
+          console.error('Error loading data.');
+        }
+      });
+    });
 
-		btnFetch.addEventListener('click', ()=>{
-			const xhr = new XMLHttpRequest();
+    // Function to render HTML with pet data
+    function renderPetCards(pets) {
+      var content = $('#content');
 
-			xhr.open("GET",'/pet.json',true);
+      // Iterate through each pet and create a card for them
+      pets.forEach(function (pet) {
+        var petCard = $('<div class="pet-card"></div>');
+        petCard.append('<h2>' + pet.name + '</h2>');
+        petCard.append('<p>Type: ' + pet.type + '</p>');
+        petCard.append('<p>Age: ' + pet.age + ' years</p>');
+        petCard.append('<p>Weight: ' + pet.weight + ' kg</p>');
+        petCard.append('<p>Likes: ' + pet.likes + '</p>');
 
-			xhr.onload = ()=>{
-				console.log(xhr.responseText);
-				renderHtml(JSON.parse(xhr.responseText));
-			}
-
-			xhr.send();
-
-		});
-
-		function renderHtml(data){
-			content.innerHTML = "";
-			for (var i = 0; i <= data.length; i++) {
-				let p = document.createElement('p');
-				let htmlpart = "";
-				htmlpart += data[i].name+" is a "+data[i].type+" with age "+data[i].age+" years and weight "+data[i].weight+"kg and likes "+data[i].likes;
-				p.innerHTML = htmlpart;
-				content.append(p);
-				// console.log(tr);
-				htmlpart="";
-			}
-
-		}
-
-		
-
-	</script>
+        // Append the pet card to the content div
+        content.append(petCard);
+      });
+    }
+  </script>
 
 </body>
-</html>
+</html> 

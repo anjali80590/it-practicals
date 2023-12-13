@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +26,13 @@
   <h1>Printing Table from 2 to 10</h1>
   <table class="center" id="content">
   </table>
-  <script type="text/javascript">
+  <script>
+    
+
+
+
+
+    // function to generate random color 
     function getRandomColor() {
         var letters = '0123456789ABCDEF';
         var color = '#';
@@ -33,29 +41,71 @@
         }
       return color;
     }
-
+  //  get table element by its id 
     var tbl = document.getElementById('content');
+    // initilase the starting number
     var number = 2;
+    // set up interval to call print function every 5 sec 
     var abc = setInterval(printrow,5000);
 
+    // function to generate and append row in table
     function printrow(){
       if (number == 10) 
       {
         clearInterval(abc);
       }
+      // initliase emtyp string to store table cell content
       var result = "";
+
+      // loop to generate multiple table for current number
       for(var i = 1; i<= 10; i++){
         result = result + "<td>"+ number + "*" + i + "=" + number * i+"</td>";
       }
+      // increment for next iteration 
       number++;
+
+      // create new table row element
       var row = document.createElement('tr');
+
+      // set row color size st
       row.style.color= getRandomColor();
-      row.style.fontSize = (number+10)+"px";
+      row.style.fontSize = (number+10)+"px";yle 
       row.innerHTML=result;
       tbl.append(row);
 
     }
   </script>
 
+
+ 
 </body>
 </html>
+
+<!-- function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+return color;
+}
+var tbl = document.getElementById('content');
+var number = 2;
+var abc = setInterval(printrow,5000);
+function printrow(){
+
+if (number == 10) 
+{
+  clearInterval(abc);
+}
+var result = "";
+for(var i = 1; i<= 10; i++){
+  result = result + "<td>"+ number + "*" + i + "=" + number * i+"</td>";
+}
+number++;
+var row = document.createElement('tr');
+row.style.color= getRandomColor();
+row.style.fontSize = (number+10)+"px";
+row.innerHTML=result;
+tbl.append(row);
+} -->

@@ -1,0 +1,162 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1 id="container">
+    i am changer
+  </h1>
+  <div class="btn-box">
+    <button class="color">red</button>
+    <button class="color">green</button>
+    <button class="color">blue</button>
+  </div>
+  <div class="btn-box">
+    <button class="fontsize">20</button>
+    <button class="fontsize">30</button>
+    <button class="fontsize">40</button>
+  </div>
+  <div class="btn-box">
+    <button class="fontstyle">cursive</button>
+    <button class="fontstyle">german</button>
+    <button class="fontstyle">spanish</button>
+  </div>
+ 
+  <script>
+    var colors=document.getElementsByClassName('color')
+    var fontstyles=document.getElementsByClassName('fontstyle')
+    var fontsizes=document.getElementsByClassName('fontsize')
+    var element=document.getElementById('container')
+
+    for(var i =0;i<colors.length;i++){
+        colors[i].addEventListener('click',changeColor)
+    }
+    function changeColor(){
+        element.style.color=this.innerHTML
+    }
+  </script>
+     
+</body>
+</html> -->
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Pet's Information</h1>
+        <label for="Name">Pet's Name</label>
+        <input type="text" name="Name">
+        <label for="age">Age</label>
+        <input type="age" name="age">
+        <label for="weight">Weight</label>
+        <input type="weight" name="weight">
+        <label for="type">Pet's Type</label>
+        <input type="text"name="type">
+        <label for="likes">Likes</label>
+        <input type="text" name="likes">
+        <button onclick="display()">Submit</button>
+
+        <script>
+           function display(){
+			// event.preventDafault();
+		
+	var pet = {};
+			var input_fields = document.getElementsByTagName('input');
+			for (var i = 0; i < input_fields.length; i++) {
+				pet[input_fields[i].name] = input_fields[i].value;
+			}
+			console.log(pet)
+		}
+        </script>
+
+
+    </div>
+    
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B.Sc. Hons CS Course</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    p {
+      line-height: 1.5;
+    }
+    #styleButton {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bachelor of Science (Hons) in Computer Science</h1>
+
+  <h2>Details:</h2>
+  <p><strong>Fee:</strong> Please check with the university for current fee details.</p>
+  <p><strong>Eligibility Criteria:</strong> Candidates must have completed 10+2 with a minimum of 50% marks in aggregate with Mathematics as a compulsory subject.</p>
+
+  <h2>Papers:</h2>
+  <ul>
+    <li>Introduction to Computer Science (Credits: 3)</li>
+    <li>Data Structures and Algorithms (Credits: 4)</li>
+    <li>Database Management Systems (Credits: 3)</li>
+    <li>Operating Systems (Credits: 3)</li>
+    <!-- Add more papers as needed -->
+  </ul>
+
+  <h2>Future Possibilities:</h2>
+  <p>Graduates can pursue careers in software development, data analysis, cybersecurity, and more. Higher education options include M.Sc. in Computer Science or related fields.</p>
+
+  <button id="styleButton">Style Page</button>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#styleButton').click(function () {
+        // Apply new styles using jQuery
+        $('body').css({
+          'font-family': 'Verdana, sans-serif',
+          'margin': '50px',
+          'background-color': '#f4f4f4'
+        });
+        $('h1, h2, h3').css('color', '#0066cc');
+        $('p').css({
+          'line-height': '1.8',
+          'color': '#333'
+        });
+        $('#styleButton').css({
+          'background-color': '#333',
+          'color': '#fff'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
